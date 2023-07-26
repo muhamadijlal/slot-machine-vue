@@ -4,7 +4,7 @@ import MachineLever from "@/components/MachineLever.vue";
 </script>
 
 <template>
-  <div class="flex w-full">
+  <div class="flex justify-center w-full">
     <machine />
 
     <machine-lever />
