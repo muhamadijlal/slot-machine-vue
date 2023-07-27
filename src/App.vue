@@ -1,5 +1,5 @@
 <script setup>
-import MachineHeader from "@/layouts/MachineHeader.vue";
+// import MachineHeader from "@/layouts/MachineHeader.vue";
 import MachineContent from "@/layouts/MachineContent.vue";
 import MachineFooter from "@/layouts/MachineFooter.vue";
 import { useDataStore } from "@/store/DataCustomerStore.js";
@@ -10,8 +10,10 @@ data.fill();
 </script>
 
 <template>
-  <div class="grid place-content-center h-screen">
-    <machine-header />
+  <div
+    class="grid place-content-center bg-[url('./assets/images/bg-prk-lottery.png')] bg-cover h-screen"
+  >
+    <!-- <machine-header /> -->
 
     <machine-content />
 
