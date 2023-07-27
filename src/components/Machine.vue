@@ -1,25 +1,39 @@
 <script setup>
-// import { reactive } from "vue";
 import { useDataStore } from "@/store/DataCustomerStore";
 
 let state = useDataStore();
+function phoneHash(str) {
+  if (str.length > 3) {
+    return str.slice(0, -3) + "xxx";
+  }
+}
+
+function padOrder(orderId) {
+  if (orderId.length > 0) {
+    const pad = "#00000";
+    return "#" + (pad + orderId).slice(-pad.length);
+  }
+}
 </script>
 
 <template>
   <div
-    class="bg-neutral-200 my-5 min-w-[250px] max-w-[250px] rounded-3xl border-2 border-slate-500"
+    class="bg-neutral-200 my-5 min-w-[350px] max-w-[350px] rounded-3xl border-2 border-slate-500"
   >
     <!-- Slots -->
-    <section class="m-5">
-      <div class="bg-violet-950 h-44 rounded-xl p-1">
+    <section class="m-8">
+      <div class="bg-violet-950 h-56 rounded-xl p-1">
         <div
-          class="bg-white break-all h-full justify-center flex flex-col items-center rounded-lg overflow-y-auto p-5 scroll"
+          class="bg-white break-all h-full text-center justify-center flex flex-col rounded-lg overflow-y-auto p-5 space-y-3"
         >
-          <h5 class="text-xl font-bold text-violet-950">
-            {{ state.data.fullname }}
+          <h5 class="text-4xl text-violet-700 font-extrabold">
+            {{ padOrder(state.data.order_id) }}
           </h5>
-          <h5 class="text-sm text-violet-700 font-medium">
-            #{{ state.data.order_id }}
+          <h5 class="text-xl font-extrabold text-violet-950">
+            {{ state.data.fullname.toUpperCase() }}
+          </h5>
+          <h5 class="text-lg font-bold text-violet-700">
+            {{ phoneHash(state.data.phone_number) }}
           </h5>
         </div>
       </div>
@@ -28,14 +42,14 @@ let state = useDataStore();
         <button
           @click.prevent="state.startAnimation"
           :disabled="state.isSpinning"
-          class="bg-green-600 rounded-lg p-2 ring-2 ring-green-700 text-sm font-bold text-white hover:scale-105 disabled:bg-slate-300 disabled:ring-slate-400 disabled:pointer-events-none"
+          class="btn-spin"
         >
           Spin now!
         </button>
         <button
           @click.prevent="state.stopAnimation"
           :disabled="!state.isSpinning"
-          class="bg-red-600 rounded-lg p-2 ring-2 ring-red-700 text-sm font-bold text-white hover:scale-105 disabled:bg-slate-300 disabled:ring-slate-400 disabled:pointer-events-none"
+          class="btn-stop"
         >
           Stop now!
         </button>

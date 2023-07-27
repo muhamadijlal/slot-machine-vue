@@ -6,8 +6,9 @@ export const useDataStore = defineStore("data-customer", {
     interval: false,
     isSpinning: false,
     data: {
-      fullname: "Click spin",
-      order_id: "-",
+      fullname: "Spin Now!",
+      order_id: "",
+      phone_number: "",
     },
   }),
   actions: {
@@ -16,6 +17,7 @@ export const useDataStore = defineStore("data-customer", {
 
       this.customers = r.default;
     },
+
     randomName() {
       return this.customers[Math.floor(Math.random() * this.customers.length)];
     },
@@ -26,7 +28,7 @@ export const useDataStore = defineStore("data-customer", {
 
     startAnimation() {
       this.isSpinning = true;
-      this.interval = setInterval(this.updateReels, 50);
+      this.interval = setInterval(this.updateReels, 1);
     },
 
     stopAnimation() {

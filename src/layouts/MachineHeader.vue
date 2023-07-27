@@ -4,7 +4,7 @@
   <header class="flex flex-col items-center">
     <img
       src="@/assets/images/prk-2023.png"
-      class="h-[100px] w-[100px]"
+      class="h-[150px] w-[150px]"
       alt="logo-prk"
     />
     <h4 class="text-md font-bold text-slate-700">
