@@ -8,7 +8,7 @@ function unit(str) {
 }
 
 function padOrder(orderId) {
-  if (orderId.length > 0) {
+  if (orderId > 0) {
     const pad = "#00000";
     return "#" + (pad + orderId).slice(-pad.length);
   }

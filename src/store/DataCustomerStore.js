@@ -1,3 +1,4 @@
+import axios from "axios";
 import { defineStore } from "pinia";
 
 export const useDataStore = defineStore("data-customer", {
@@ -7,9 +8,10 @@ export const useDataStore = defineStore("data-customer", {
 
   actions: {
     async fill() {
-      let r = await import("@/biodata.json");
+      // let r = await import("@/biodata.json");
+      let r = await axios.get("http://localhost:3000/api/doorprizes");
 
-      this.data = r.default;
+      this.data = r.data;
     },
   },
 });

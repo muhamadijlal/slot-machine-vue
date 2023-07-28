@@ -1,13 +1,18 @@
 <script setup>
 import { useDataStore } from "@/store/DataCustomerStore";
 import WinModal from "@/components/winModal.vue";
+import axios from "axios";
 import { reactive } from "vue";
+import { useRoute } from "vue-router";
 
 const spinAudio = new Audio("../../src/assets/audio/trol 5.mp3");
 const winAudio = new Audio("../../src/assets/audio/new win 2.wav");
 const state = useDataStore();
 
+const route = useRoute();
+
 const data = reactive({
+  product_name: route.params.id,
   isSpinning: false,
   interval: false,
   showModal: false,
@@ -18,6 +23,24 @@ const data = reactive({
   },
 });
 
+async function storeData() {
+  await axios
+    .post("http://localhost:3000/api/winner_history", {
+      order_id: data.customer.order_id,
+      product_name: data.product_name,
+      fullname: data.customer.fullname,
+      phone_number: data.customer.phone_number,
+    })
+    .then((response) => {
+      if (200 == response.status) {
+        clear();
+      }
+    })
+    .catch((response) => {
+      console.log(response);
+    });
+}
+
 function phoneHash(str) {
   if (str.length > 3) {
     return str.slice(0, -3) + "xxx";
@@ -25,7 +48,7 @@ function phoneHash(str) {
 }
 
 function padOrder(orderId) {
-  if (orderId.length > 0) {
+  if (orderId > 0) {
     const pad = "#00000";
     return "#" + (pad + orderId).slice(-pad.length);
   }
@@ -49,6 +72,10 @@ function startAnimation() {
 function closeModal() {
   data.showModal = false;
   winAudio.pause();
+  storeData();
+}
+
+function clear() {
   data.customer = {
     fullname: "Spin Now!",
     order_id: "",
