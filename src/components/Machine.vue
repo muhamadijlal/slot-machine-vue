@@ -32,9 +32,7 @@ async function storeData() {
       phone_number: data.customer.phone_number,
     })
     .then((response) => {
-      if (200 == response.status) {
-        clear();
-      }
+      console.log(response);
     })
     .catch((response) => {
       console.log(response);
@@ -72,7 +70,7 @@ function startAnimation() {
 function closeModal() {
   data.showModal = false;
   winAudio.pause();
-  storeData();
+  clear();
 }
 
 function clear() {
@@ -90,6 +88,7 @@ function stopAnimation() {
   data.isSpinning = false;
   data.showModal = true;
   clearInterval(data.interval);
+  storeData();
 }
 </script>
 
