@@ -61,7 +61,7 @@ function updateReels() {
 }
 
 function startAnimation() {
-  // spinAudio.loop = true;
+  spinAudio.loop = true;
   spinAudio.play();
   data.isSpinning = true;
   data.interval = setInterval(updateReels, 1);
@@ -82,7 +82,7 @@ function clear() {
 }
 
 function stopAnimation() {
-  // spinAudio.loop = false;
+  spinAudio.loop = false;
   spinAudio.pause();
   winAudio.play();
   data.isSpinning = false;
@@ -111,7 +111,7 @@ function stopAnimation() {
           <h5 class="text-4xl text-violet-700 font-extrabold">
             {{ padOrder(data.customer.order_id) }}
           </h5>
-          <h5 class="text-xl font-extrabold text-violet-950">
+          <h5 class="text-xl font-extrabold text-sky-500">
             {{ data.customer.fullname.toUpperCase() }}
           </h5>
           <h5 class="text-lg font-bold text-violet-700">

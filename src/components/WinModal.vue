@@ -27,7 +27,7 @@ function phoneHash(str) {
       class="text-center space-y-7 grid place-content-center bg-white h-3/4 w-3/4 mt-[10%] py-[60px] rounded-3xl p-10"
     >
       <h6 class="font-extrabold text-yellow-500 text-5xl">Selamat!</h6>
-      <h6 class="font-extrabold text-violet-700 text-6xl">
+      <h6 class="font-extrabold text-sky-500 text-6xl">
         {{ customer.fullname.toUpperCase() }}
       </h6>
       <h6 class="font-extrabold text-violet-600 text-2xl">
@@ -44,7 +44,7 @@ function phoneHash(str) {
           class="btn-success w-[250px] m-auto"
           @click="$emit('close-modal')"
         >
-          Save
+          Accept
         </button>
 
         <button
